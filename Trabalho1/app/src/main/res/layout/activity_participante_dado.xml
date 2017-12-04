@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.uffjf.dcc196.ana.trabalho1.view.ParticipanteDadoActivity">
+
+    <TextView
+        android:id="@+id/lbSaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbSaida"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/lbEntrada"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/btnVoltar"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="184dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/lbEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbEntrada"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/lbEmail"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/lbEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbEmail"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/lbNome" />
+
+    <TextView
+        android:id="@+id/lbNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbNomeParticipante"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="35dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/lbNome"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="52dp" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintLeft_toRightOf="@+id/lbEmail"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
+
+    <TextView
+        android:id="@+id/txtEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintLeft_toRightOf="@+id/lbEntrada"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/txtSaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintLeft_toRightOf="@+id/lbSaida"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEntrada"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
+        app:layout_constraintVertical_bias="0.008" />
+</android.support.constraint.ConstraintLayout>

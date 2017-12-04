@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">BienalAPP</string>
+    <string name="btnParticipantes">Participantes</string>
+    <string name="btnLivros">Livros</string>
+    <string name="btnReservas">Reservas</string>
+    <string name="lbNomeParticipante">Nome</string>
+    <string name="txtNomeParticipante">Informe o nome</string>
+    <string name="txtEmailParticipante">Informe o email</string>
+    <string name="btnSalvar">Salvar</string>
+    <string name="btnVoltar">Voltar</string>
+    <string name="txtTitulo">Título</string>
+    <string name="txtEditora">Editora</string>
+    <string name="txtAno">Ano</string>
+    <string name="txtAutor">Autor</string>
+    <string name="btnLista">Listar</string>
+    <string name="lbParticipante">Participante</string>
+    <string name="lbLivro">Livro</string>
+    <string name="lbEmail">Email</string>
+    <string name="lbEntrada">Entrada</string>
+    <string name="lbSaida">Saída</string>
+</resources>
