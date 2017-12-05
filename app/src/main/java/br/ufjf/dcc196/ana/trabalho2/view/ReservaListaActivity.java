@@ -15,7 +15,6 @@ import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
 
 public class ReservaListaActivity extends AppCompatActivity {
     private ListView lstReservas;
-    private Button btnVoltar;
     private TextView txtTitulo;
     private TextView txtAutor;
     private TextView txtEditora;
@@ -26,7 +25,6 @@ public class ReservaListaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva_lista);
 
-        btnVoltar = (Button) findViewById(R.id.btnVoltar);
         lstReservas = (ListView) findViewById(R.id.lstReservas);
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtAutor = (TextView) findViewById(R.id.txtAutor);
@@ -39,15 +37,6 @@ public class ReservaListaActivity extends AppCompatActivity {
         txtAutor.setText(livro.getAutor());
         txtEditora.setText(livro.getEditora());
         txtAno.setText(livro.getAno());
-
-       btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent listLivro = new Intent(ReservaListaActivity.this, LivroListaActivity.class);
-                startActivity(listLivro);
-                finish();
-            }
-        });
 
        final ArrayAdapter<Pessoa> adaptador = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_list_item_1,

@@ -17,7 +17,6 @@ public class LivroActivity extends AppCompatActivity {
     private EditText txtEditora;
     private EditText txtAno;
     private EditText txtAutor;
-    private Button btnVoltar;
     private Button btnSalvar;
     private Button btnListar;
 
@@ -31,18 +30,8 @@ public class LivroActivity extends AppCompatActivity {
         txtEditora = (EditText) findViewById(R.id.txtEditora);
         txtAno = (EditText) findViewById(R.id.txtAno);
         txtAutor = (EditText) findViewById(R.id.txtAutor);
-        btnVoltar = (Button) findViewById(R.id.btnVoltar);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
         btnListar = (Button) findViewById(R.id.btnListar);
-
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent principal = new Intent(LivroActivity.this, PrincipalActivity.class);
-                startActivity(principal);
-                finish();
-            }
-        });
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +66,8 @@ public class LivroActivity extends AppCompatActivity {
         btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent listLivro = new Intent(LivroActivity.this, LivroListaActivity.class);
-                startActivity(listLivro);
+            Intent listLivro = new Intent(LivroActivity.this, LivroListaActivity.class);
+            startActivity(listLivro);
             }
         });
     }

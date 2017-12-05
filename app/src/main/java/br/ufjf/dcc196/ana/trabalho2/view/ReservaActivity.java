@@ -18,7 +18,6 @@ import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
 public class ReservaActivity extends AppCompatActivity {
     private Spinner spParticipante;
     private Spinner spLivro;
-    private Button btnVoltar;
     private Button btnSalvar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +27,6 @@ public class ReservaActivity extends AppCompatActivity {
         spParticipante = (Spinner) findViewById(R.id.spParticipante);
         spLivro = (Spinner) findViewById(R.id.spLivro);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
-        btnVoltar = (Button) findViewById(R.id.btnVoltar);
-
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent principal = new Intent(ReservaActivity.this, PrincipalActivity.class);
-                startActivity(principal);
-                finish();
-            }
-        });
 
         ArrayAdapter<Pessoa> adaptador = new ArrayAdapter<>(getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,

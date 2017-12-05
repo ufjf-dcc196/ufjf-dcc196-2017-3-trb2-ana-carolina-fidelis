@@ -20,18 +20,6 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btnVoltar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/btnVoltar"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="184dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <TextView
         android:id="@+id/lbEntrada"
         android:layout_width="wrap_content"
@@ -119,8 +107,5 @@
         app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintLeft_toRightOf="@+id/lbSaida"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEntrada"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnVoltar"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEntrada" />
 </android.support.constraint.ConstraintLayout>

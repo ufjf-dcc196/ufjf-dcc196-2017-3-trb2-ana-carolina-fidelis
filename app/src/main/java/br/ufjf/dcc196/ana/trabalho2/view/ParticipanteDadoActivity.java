@@ -13,7 +13,6 @@ import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
 
 public class ParticipanteDadoActivity extends AppCompatActivity {
-    private Button btnVoltar;
     private TextView txtNome;
     private TextView txtEmail;
     private TextView txtEntrada;
@@ -24,7 +23,6 @@ public class ParticipanteDadoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participante_dado);
 
-        btnVoltar = (Button) findViewById(R.id.btnVoltar);
         txtNome = (TextView) findViewById(R.id.txtNome);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         txtEntrada = (TextView) findViewById(R.id.txtEntrada);
@@ -47,15 +45,6 @@ public class ParticipanteDadoActivity extends AppCompatActivity {
             Calendar saida = participante.getHoraSaida();
             txtSaida.setText(saida.get(Calendar.HOUR) + ":" + saida.get(Calendar.MINUTE) + ":" + saida.get(Calendar.SECOND));
         }
-
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent principal = new Intent(ParticipanteDadoActivity.this, PrincipalActivity.class);
-                startActivity(principal);
-                finish();
-            }
-        });
 
     }
 }

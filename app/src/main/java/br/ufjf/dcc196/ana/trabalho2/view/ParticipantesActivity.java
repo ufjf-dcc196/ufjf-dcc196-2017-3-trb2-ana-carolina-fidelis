@@ -16,8 +16,6 @@ public class ParticipantesActivity extends AppCompatActivity {
     private EditText txtNome;
     private EditText txtEmail;
     private Button btnSalvar;
-    private Button btnVoltar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +25,6 @@ public class ParticipantesActivity extends AppCompatActivity {
         txtNome = (EditText)findViewById(R.id.txtNomeParticipante);
         txtEmail = (EditText) findViewById(R.id.txtEmailParticipante);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
-        btnVoltar = (Button) findViewById(R.id.btnVoltar);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,15 +45,6 @@ public class ParticipantesActivity extends AppCompatActivity {
                     txtNome.requestFocus();
                     Toast.makeText(getApplicationContext(), "Participante salvo com sucesso!", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent principal = new Intent(ParticipantesActivity.this, PrincipalActivity.class);
-                startActivity(principal);
-                finish();
             }
         });
     }
