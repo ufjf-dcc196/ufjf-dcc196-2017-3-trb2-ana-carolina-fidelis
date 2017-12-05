@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.ufjf.dcc196.ana.trabalho2.view.PrincipalActivity">
+
+    <Button
+        android:id="@+id/btnParticipantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/btnParticipantes"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/lstParticipantes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btnLivros"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLivros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/btnLivros"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/lstParticipantes"
+        app:layout_constraintLeft_toRightOf="@+id/btnParticipantes"
+        app:layout_constraintRight_toLeftOf="@+id/btnReservas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnReservas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/btnReservas"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toTopOf="@+id/lstParticipantes"
+        app:layout_constraintLeft_toRightOf="@+id/btnLivros"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lstParticipantes"
+        android:layout_width="350dp"
+        android:layout_height="415dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnParticipantes" />
+</android.support.constraint.ConstraintLayout>
