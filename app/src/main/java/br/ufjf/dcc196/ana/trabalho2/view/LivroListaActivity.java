@@ -10,34 +10,41 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.adapter.LivroAdapter;
+import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
 import br.ufjf.dcc196.ana.trabalho2.helper.LivroHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 
 public class LivroListaActivity extends AppCompatActivity {
 
     private ListView lstLivros;
+    private BienalDBHelper bienalDBHelper;
+    private LivroAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livro_lista);
 
+        adapter = new LivroAdapter(getBaseContext(), null);
+        bienalDBHelper = new BienalDBHelper(getApplicationContext());
+
         lstLivros = (ListView) findViewById(R.id.lstLivros);
-
-        final ArrayAdapter<Livro> adaptador = new ArrayAdapter<>(getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                LivroHelper.getInstance().listar());
-
-        lstLivros.setAdapter(adaptador);
+        lstLivros.setAdapter(adapter);
+        adapter.atualizar();
 
         //clicar a lista de livros
         lstLivros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Livro livro = adaptador.getItem(position);
-            Intent in = new Intent(LivroListaActivity.this, ReservaListaActivity.class);
-            in.putExtra("livro", livro);
-            startActivity(in);
+                Livro livro = adapter.buscar(id);
+
+                if(livro!= null){
+                    Intent in = new Intent(LivroListaActivity.this, ReservaListaActivity.class);
+                    in.putExtra("livro", livro);
+                    startActivity(in);
+                }
+
             }
         });
     }

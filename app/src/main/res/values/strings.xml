@@ -7,7 +7,6 @@
     <string name="txtNomeParticipante">Informe o nome</string>
     <string name="txtEmailParticipante">Informe o email</string>
     <string name="btnSalvar">Salvar</string>
-    <string name="btnVoltar">Voltar</string>
     <string name="txtTitulo">Título</string>
     <string name="txtEditora">Editora</string>
     <string name="txtAno">Ano</string>

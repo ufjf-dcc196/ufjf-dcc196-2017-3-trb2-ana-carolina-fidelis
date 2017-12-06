@@ -31,7 +31,9 @@
         <activity
             android:name=".view.ReservaListaActivity"
             android:label="BienalAPP - Livros e Reservas" />
-        <activity android:name=".view.ParticipanteDadoActivity" android:label="BienalAPP - Participantes"></activity>
+        <activity
+            android:name=".view.ParticipanteDadoActivity"
+            android:label="BienalAPP - Participantes" />
     </application>
 
 </manifest>

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.adapter.LivroAdapter;
+import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
 import br.ufjf.dcc196.ana.trabalho2.helper.LivroHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 
@@ -19,6 +21,8 @@ public class LivroActivity extends AppCompatActivity {
     private EditText txtAutor;
     private Button btnSalvar;
     private Button btnListar;
+    private BienalDBHelper bienalDBHelper;
+    private LivroAdapter adapter;
 
 
     @Override
@@ -26,6 +30,8 @@ public class LivroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_livro);
 
+        adapter = new LivroAdapter(getBaseContext(), null);
+        bienalDBHelper = new BienalDBHelper(getApplicationContext());
         txtTitulo = (EditText) findViewById(R.id.txtTitulo);
         txtEditora = (EditText) findViewById(R.id.txtEditora);
         txtAno = (EditText) findViewById(R.id.txtAno);
@@ -51,7 +57,8 @@ public class LivroActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Informe o ano.", Toast.LENGTH_SHORT).show();
                     txtAno.requestFocus();
                 }else{
-                    LivroHelper.getInstance().inserir(new Livro(titulo, autor, editora, ano));
+                    //LivroHelper.getInstance().inserir(new Livro(titulo, autor, editora, ano));
+                    adapter.inserir(new Livro(titulo, autor, editora, ano));
                     Toast.makeText(getApplicationContext(), "Livro salvo com sucesso!", Toast.LENGTH_SHORT).show();
                     txtTitulo.setText("");
                     txtEditora.setText("");
