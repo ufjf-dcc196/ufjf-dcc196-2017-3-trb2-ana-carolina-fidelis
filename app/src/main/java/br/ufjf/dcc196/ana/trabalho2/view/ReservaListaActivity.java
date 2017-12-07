@@ -1,17 +1,14 @@
 package br.ufjf.dcc196.ana.trabalho2.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
-import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
+import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 public class ReservaListaActivity extends AppCompatActivity {
     private ListView lstReservas;
@@ -38,7 +35,7 @@ public class ReservaListaActivity extends AppCompatActivity {
         txtEditora.setText(livro.getEditora());
         txtAno.setText(livro.getAno());
 
-       final ArrayAdapter<Pessoa> adaptador = new ArrayAdapter<>(getApplicationContext(),
+       final ArrayAdapter<Participante> adaptador = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_list_item_1,
                 livro.getReservas()
         );

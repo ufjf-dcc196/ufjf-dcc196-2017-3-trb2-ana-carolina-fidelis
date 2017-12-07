@@ -21,7 +21,6 @@ public class LivroActivity extends AppCompatActivity {
     private EditText txtAutor;
     private Button btnSalvar;
     private Button btnListar;
-    private BienalDBHelper bienalDBHelper;
     private LivroAdapter adapter;
 
 
@@ -31,7 +30,6 @@ public class LivroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_livro);
 
         adapter = new LivroAdapter(getBaseContext(), null);
-        bienalDBHelper = new BienalDBHelper(getApplicationContext());
         txtTitulo = (EditText) findViewById(R.id.txtTitulo);
         txtEditora = (EditText) findViewById(R.id.txtEditora);
         txtAno = (EditText) findViewById(R.id.txtAno);

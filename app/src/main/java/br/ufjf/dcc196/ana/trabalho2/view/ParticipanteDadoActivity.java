@@ -1,16 +1,13 @@
 package br.ufjf.dcc196.ana.trabalho2.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
-import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
+import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 public class ParticipanteDadoActivity extends AppCompatActivity {
     private TextView txtNome;
@@ -28,22 +25,20 @@ public class ParticipanteDadoActivity extends AppCompatActivity {
         txtEntrada = (TextView) findViewById(R.id.txtEntrada);
         txtSaida = (TextView) findViewById(R.id.txtSaida);
 
-        Pessoa participante = (Pessoa) getIntent().getSerializableExtra("participante");
+        Participante participante = (Participante) getIntent().getSerializableExtra("participante");
 
        txtNome.setText(participante.getNome());
         txtEmail.setText(participante.getEmail());
         if(participante.getHoraEntrada() == null){
             txtEntrada.setText("--:--");
         }else{
-           Calendar entrada = participante.getHoraEntrada();
-           txtEntrada.setText(entrada.get(Calendar.HOUR) + ":" + entrada.get(Calendar.MINUTE) + ":" + entrada.get(Calendar.SECOND));
+           txtEntrada.setText(participante.getHoraEntrada());
         }
 
         if(participante.getHoraSaida() == null){
             txtSaida.setText("--:--");
         }else{
-            Calendar saida = participante.getHoraSaida();
-            txtSaida.setText(saida.get(Calendar.HOUR) + ":" + saida.get(Calendar.MINUTE) + ":" + saida.get(Calendar.SECOND));
+            txtSaida.setText(participante.getHoraSaida());
         }
 
     }

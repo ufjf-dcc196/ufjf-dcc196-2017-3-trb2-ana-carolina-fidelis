@@ -10,7 +10,7 @@ public class Livro implements Serializable {
     private String editora;
     private String ano;
     private String autor;
-    private ArrayList<Pessoa> reservas = new ArrayList<>();
+    private ArrayList<Participante> reservas = new ArrayList<>();
 
     public Livro() {
 
@@ -74,12 +74,12 @@ public class Livro implements Serializable {
         this.ano = ano;
     }
 
-    public List<Pessoa> getReservas(){
+    public List<Participante> getReservas(){
         return this.reservas;
     }
 
-    public void addReserva(Pessoa pessoa){
-        this.reservas.add(pessoa);
+    public void addReserva(Participante participante){
+        this.reservas.add(participante);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package br.ufjf.dcc196.ana.trabalho2.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,7 @@ import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.helper.LivroHelper;
 import br.ufjf.dcc196.ana.trabalho2.helper.PessoaHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
-import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
+import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 public class ReservaActivity extends AppCompatActivity {
     private Spinner spParticipante;
@@ -28,7 +27,7 @@ public class ReservaActivity extends AppCompatActivity {
         spLivro = (Spinner) findViewById(R.id.spLivro);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
 
-        ArrayAdapter<Pessoa> adaptador = new ArrayAdapter<>(getApplicationContext(),
+        ArrayAdapter<Participante> adaptador = new ArrayAdapter<>(getApplicationContext(),
                 R.layout.support_simple_spinner_dropdown_item,
                 PessoaHelper.getInstance().listar());
         adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -45,7 +44,7 @@ public class ReservaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Livro livro = (Livro) spLivro.getSelectedItem();
-                Pessoa participante = (Pessoa) spParticipante.getSelectedItem();
+                Participante participante = (Participante) spParticipante.getSelectedItem();
 
                 livro.addReserva(participante);
                 spLivro.setSelection(0);

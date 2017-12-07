@@ -12,7 +12,6 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
-import br.ufjf.dcc196.ana.trabalho2.contract.BienalContract;
 import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 

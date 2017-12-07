@@ -3,12 +3,12 @@ package br.ufjf.dcc196.ana.trabalho2.helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
+import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 
 public class PessoaHelper {
     private static PessoaHelper instance;
-    private static List<Pessoa> pessoas;
+    private static List<Participante> participantes;
 
     public static PessoaHelper getInstance(){
         if(instance == null){
@@ -19,36 +19,36 @@ public class PessoaHelper {
     }
 
     private static void init(){
-        if(pessoas == null){
-            pessoas = new ArrayList<>();
-            pessoas.add(new Pessoa(1,"Pedro Henrique", "pedro@net.com.br"));
-            pessoas.add(new Pessoa(2,"Ana Maria", "maria@net.com.br"));
-            pessoas.add(new Pessoa(3, "Júlio da Silva", "julio@net.com.br"));
-            pessoas.add(new Pessoa(4, "Barack Obama", "obama@net.com.br"));
+        if(participantes == null){
+            participantes = new ArrayList<>();
+            participantes.add(new Participante(1,"Pedro Henrique", "pedro@net.com.br"));
+            participantes.add(new Participante(2,"Ana Maria", "maria@net.com.br"));
+            participantes.add(new Participante(3, "Júlio da Silva", "julio@net.com.br"));
+            participantes.add(new Participante(4, "Barack Obama", "obama@net.com.br"));
         }
     }
 
-    public void inserir(Pessoa p){
+    public void inserir(Participante p){
         p.setId(proximoID());
-        pessoas.add(p);
+        participantes.add(p);
     }
 
-    public List<Pessoa> listar(){
-        return pessoas;
+    public List<Participante> listar(){
+        return participantes;
     }
 
-    public Pessoa buscar(int id){
-        Pessoa pessoa = null;
-        for(Pessoa p: pessoas){
+    public Participante buscar(int id){
+        Participante participante = null;
+        for(Participante p: participantes){
             if(p.getId() == id){
-                pessoa = p;
+                participante = p;
             }
         }
-        return pessoa;
+        return participante;
     }
 
     private int proximoID(){
-        return pessoas.size()+ 1;
+        return participantes.size()+ 1;
     }
 
 }

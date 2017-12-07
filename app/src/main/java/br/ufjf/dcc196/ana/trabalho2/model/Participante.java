@@ -3,22 +3,22 @@ package br.ufjf.dcc196.ana.trabalho2.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class Pessoa implements Serializable {
+public class Participante implements Serializable {
     private int id;
     private String nome;
     private String email;
-    private Calendar horaEntrada;
-    private Calendar horaSaida;
+    private String horaEntrada;
+    private String horaSaida;
 
-    public Pessoa() {
+    public Participante() {
     }
 
-    public Pessoa(String nome, String email) {
+    public Participante(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }
 
-    public Pessoa(int id, String nome, String email) {
+    public Participante(int id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -48,19 +48,19 @@ public class Pessoa implements Serializable {
         this.email = email;
     }
 
-    public Calendar getHoraEntrada() {
+    public String getHoraEntrada() {
         return horaEntrada;
     }
 
-    public void setHoraEntrada(Calendar horaEntrada) {
+    public void setHoraEntrada(String horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
 
-    public Calendar getHoraSaida() {
+    public String getHoraSaida() {
         return horaSaida;
     }
 
-    public void setHoraSaida(Calendar horaSaida) {
+    public void setHoraSaida(String horaSaida) {
         this.horaSaida = horaSaida;
     }
 

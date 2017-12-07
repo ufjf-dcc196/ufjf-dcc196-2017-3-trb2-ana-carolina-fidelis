@@ -1,6 +1,5 @@
 package br.ufjf.dcc196.ana.trabalho2.view;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.Toast;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.helper.PessoaHelper;
-import br.ufjf.dcc196.ana.trabalho2.model.Pessoa;
+import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 public class ParticipantesActivity extends AppCompatActivity {
     private EditText txtNome;
@@ -38,7 +37,7 @@ public class ParticipantesActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Informe o email do participante.", Toast.LENGTH_SHORT).show();
                     txtEmail.requestFocus();
                 }else{
-                    Pessoa p = new Pessoa(nome, email);
+                    Participante p = new Participante(nome, email);
                     PessoaHelper.getInstance().inserir(p);
                     txtNome.setText("");
                     txtEmail.setText("");
