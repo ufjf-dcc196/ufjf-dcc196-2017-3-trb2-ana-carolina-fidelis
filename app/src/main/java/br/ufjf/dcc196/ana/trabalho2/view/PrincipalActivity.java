@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,8 +13,6 @@ import java.util.Calendar;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.adapter.ParticipanteAdapter;
-import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
-import br.ufjf.dcc196.ana.trabalho2.helper.PessoaHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
 public class PrincipalActivity extends AppCompatActivity {
@@ -23,8 +20,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private Button btnLivros;
     private Button btnReservas;
     private ListView lstParticipantes;
-    private ParticipanteAdapter adapter;
-    private BienalDBHelper bienalDBHelper;
+    private ParticipanteAdapter participanteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +60,16 @@ public class PrincipalActivity extends AppCompatActivity {
         });
 
         lstParticipantes = (ListView) findViewById(R.id.lstParticipantes);
-        bienalDBHelper = new BienalDBHelper(getApplicationContext());
-        adapter = new ParticipanteAdapter(getBaseContext(), null);
-        adapter.atualizar();
+        participanteAdapter = new ParticipanteAdapter(getBaseContext(), null);
+        participanteAdapter.atualizar();
 
-        lstParticipantes.setAdapter(adapter);
+        lstParticipantes.setAdapter(participanteAdapter);
 
         //clicar no participante para visualizar seus dados
-        lstParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       lstParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Participante participante = adapter.buscar(id);
+                Participante participante = participanteAdapter.buscar(id);
                 Intent in = new Intent(PrincipalActivity.this, ParticipanteDadoActivity.class);
                 in.putExtra("participante", participante);
                 startActivity(in);
@@ -85,21 +80,21 @@ public class PrincipalActivity extends AppCompatActivity {
         lstParticipantes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Participante participante = adapter.buscar(id);
+                Participante participante = participanteAdapter.buscar(id);
                 Calendar c = Calendar.getInstance();
                 if(participante.getHoraEntrada() == null){
                     participante.setHoraEntrada(c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE));
-                    adapter.alterarHoraEntrada(participante);
+                    participanteAdapter.alterarHoraEntrada(participante);
                     Toast.makeText(PrincipalActivity.this, "Entrada registrada.", Toast.LENGTH_SHORT).show();
                 }else if(participante.getHoraSaida() == null){
                     participante.setHoraSaida(c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE));
-                    adapter.alterarHoraSaida(participante);
+                    participanteAdapter.alterarHoraSaida(participante);
                     Toast.makeText(PrincipalActivity.this, "Saída registrada.", Toast.LENGTH_SHORT).show();
                 }else{
                     participante.setHoraEntrada(null);
                     participante.setHoraSaida(null);
-                    adapter.alterarHoraEntrada(participante);
-                    adapter.alterarHoraSaida(participante);
+                    participanteAdapter.alterarHoraEntrada(participante);
+                    participanteAdapter.alterarHoraSaida(participante);
                     Toast.makeText(PrincipalActivity.this, "Registro de entrada e saída apagados.", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -109,6 +104,9 @@ public class PrincipalActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        participanteAdapter.notifyDataSetChanged();
+        participanteAdapter.atualizar();
 
+        super.onResume();
     }
 }

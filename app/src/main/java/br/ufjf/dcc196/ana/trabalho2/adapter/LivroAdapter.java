@@ -12,6 +12,8 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.contract.LivroContract;
+import br.ufjf.dcc196.ana.trabalho2.contract.ParticipanteContract;
 import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 
@@ -33,31 +35,31 @@ public class LivroAdapter extends CursorAdapter {
         TextView txtTitulo = (TextView) view.findViewById(R.id.txtTitulo);
         TextView txtAno = (TextView) view.findViewById(R.id.txtAno);
         TextView txtAutor = (TextView) view.findViewById(R.id.txtAutor);
-        String titulo = cursor.getString(cursor.getColumnIndexOrThrow(BienalContract.Livro.COLUMN_NAME_TITULO));
-        String autor = cursor.getString(cursor.getColumnIndexOrThrow(BienalContract.Livro.COLUMN_NAME_AUTOR));
-        int ano = cursor.getInt(cursor.getColumnIndexOrThrow(BienalContract.Livro.COLUMN_NAME_ANO));
+        String titulo = cursor.getString(cursor.getColumnIndexOrThrow(LivroContract.Livro.COLUMN_NAME_TITULO));
+        String autor = cursor.getString(cursor.getColumnIndexOrThrow(LivroContract.Livro.COLUMN_NAME_AUTOR));
+        String ano = cursor.getString(cursor.getColumnIndexOrThrow(LivroContract.Livro.COLUMN_NAME_ANO));
         txtTitulo.setText(titulo);
         txtAutor.setText(autor);
-        txtAno.setText(String.valueOf(ano));
+        txtAno.setText(ano);
     }
 
     public void atualizar(){
         try {
             SQLiteDatabase db = bienalDBHelper.getReadableDatabase();
             String[] visao = {
-                    BienalContract.Livro._ID,
-                    BienalContract.Livro.COLUMN_NAME_TITULO,
-                    BienalContract.Livro.COLUMN_NAME_AUTOR,
-                    BienalContract.Livro.COLUMN_NAME_ANO,
+                    ParticipanteContract.Participante._ID,
+                    ParticipanteContract.Participante.COLUMN_NAME_NOME,
+                    ParticipanteContract.Participante.COLUMN_NAME_EMAIL,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA
             };
-
-            String sort = BienalContract.Livro.COLUMN_NAME_AUTOR + " ASC";
-            Cursor c = db.query(BienalContract.Livro.TABLE_NAME, visao, null, null, null, null, sort);
+            String sort = ParticipanteContract.Participante.COLUMN_NAME_NOME + " ASC";
+            Cursor c = db.query(ParticipanteContract.Participante.TABLE_NAME, visao, null, null, null, null, null);
             this.changeCursor(c);
-
-        } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+        }
+        catch (Exception e) {
+            Log.e("ATUALIZAR PARTICIPANTE", e.getLocalizedMessage());
+            Log.e("ATUALIZAR PARTICIPANTE", e.getStackTrace().toString());
         }
     }
 
@@ -65,11 +67,11 @@ public class LivroAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(BienalContract.Livro.COLUMN_NAME_TITULO, livro.getTitulo());
-            values.put(BienalContract.Livro.COLUMN_NAME_AUTOR, livro.getAutor());
-            values.put(BienalContract.Livro.COLUMN_NAME_ANO, livro.getAno());
-            values.put(BienalContract.Livro.COLUMN_NAME_EDITORA, livro.getEditora());
-            long id = db.insert(BienalContract.Livro.TABLE_NAME, null, values);
+            values.put(LivroContract.Livro.COLUMN_NAME_TITULO, livro.getTitulo());
+            values.put(LivroContract.Livro.COLUMN_NAME_AUTOR, livro.getAutor());
+            values.put(LivroContract.Livro.COLUMN_NAME_ANO, livro.getAno());
+            values.put(LivroContract.Livro.COLUMN_NAME_EDITORA, livro.getEditora());
+            long id = db.insert(LivroContract.Livro.TABLE_NAME, null, values);
             atualizar();
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());
@@ -82,20 +84,20 @@ public class LivroAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getReadableDatabase();
             String[] visao = {
-                    BienalContract.Livro._ID,
-                    BienalContract.Livro.COLUMN_NAME_TITULO,
-                    BienalContract.Livro.COLUMN_NAME_AUTOR,
-                    BienalContract.Livro.COLUMN_NAME_ANO,
-                    BienalContract.Livro.COLUMN_NAME_EDITORA
+                    LivroContract.Livro._ID,
+                    LivroContract.Livro.COLUMN_NAME_TITULO,
+                    LivroContract.Livro.COLUMN_NAME_AUTOR,
+                    LivroContract.Livro.COLUMN_NAME_ANO,
+                    LivroContract.Livro.COLUMN_NAME_EDITORA
             };
-            String selecao = BienalContract.Livro._ID + " = " + id;
-            Cursor c = db.query(BienalContract.Livro.TABLE_NAME, visao, selecao, null, null, null, null);
+            String selecao = LivroContract.Livro._ID + " = " + id;
+            Cursor c = db.query(LivroContract.Livro.TABLE_NAME, visao, selecao, null, null, null, null);
             c.moveToFirst();
-            livro.setId(c.getInt(c.getColumnIndex(BienalContract.Livro._ID)));
-            livro.setTitulo(c.getString(c.getColumnIndex(BienalContract.Livro.COLUMN_NAME_TITULO)));
-            livro.setAutor(c.getString(c.getColumnIndex(BienalContract.Livro.COLUMN_NAME_AUTOR)));
-            livro.setAno(c.getString(c.getColumnIndex(BienalContract.Livro.COLUMN_NAME_ANO)));
-            livro.setEditora(c.getString(c.getColumnIndex(BienalContract.Livro.COLUMN_NAME_EDITORA)));
+            livro.setId(c.getInt(c.getColumnIndex(LivroContract.Livro._ID)));
+            livro.setTitulo(c.getString(c.getColumnIndex(LivroContract.Livro.COLUMN_NAME_TITULO)));
+            livro.setAutor(c.getString(c.getColumnIndex(LivroContract.Livro.COLUMN_NAME_AUTOR)));
+            livro.setAno(c.getString(c.getColumnIndex(LivroContract.Livro.COLUMN_NAME_ANO)));
+            livro.setEditora(c.getString(c.getColumnIndex(LivroContract.Livro.COLUMN_NAME_EDITORA)));
 
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());

@@ -11,14 +11,11 @@ import android.widget.ListView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
 import br.ufjf.dcc196.ana.trabalho2.adapter.LivroAdapter;
-import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
-import br.ufjf.dcc196.ana.trabalho2.helper.LivroHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 
 public class LivroListaActivity extends AppCompatActivity {
 
     private ListView lstLivros;
-    private BienalDBHelper bienalDBHelper;
     private LivroAdapter adapter;
 
     @Override
@@ -27,8 +24,6 @@ public class LivroListaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_livro_lista);
 
         adapter = new LivroAdapter(getBaseContext(), null);
-        bienalDBHelper = new BienalDBHelper(getApplicationContext());
-
         lstLivros = (ListView) findViewById(R.id.lstLivros);
         lstLivros.setAdapter(adapter);
         adapter.atualizar();

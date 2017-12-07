@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import br.ufjf.dcc196.ana.trabalho2.contract.ParticipanteContract;
 import br.ufjf.dcc196.ana.trabalho2.helper.BienalDBHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
@@ -33,30 +34,29 @@ public class ParticipanteAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         TextView txtNome = (TextView)view.findViewById(R.id.txtNome);
         TextView txtEmail = (TextView)view.findViewById(R.id.txtEmail);
-        String nome = cursor.getString(cursor.getColumnIndexOrThrow(BienalContract.Participante.COLUMN_NAME_NOME));
-        String email = cursor.getString(cursor.getColumnIndexOrThrow(BienalContract.Participante.COLUMN_NAME_EMAIL));
+        String nome = cursor.getString(cursor.getColumnIndexOrThrow(ParticipanteContract.Participante.COLUMN_NAME_NOME));
+        String email = cursor.getString(cursor.getColumnIndexOrThrow(ParticipanteContract.Participante.COLUMN_NAME_EMAIL));
         txtNome.setText(nome);
         txtEmail.setText(email);
     }
 
     public void atualizar(){
-        try {
+       try {
             SQLiteDatabase db = bienalDBHelper.getReadableDatabase();
             String[] visao = {
-                    BienalContract.Participante._ID,
-                    BienalContract.Participante.COLUMN_NAME_NOME,
-                    BienalContract.Participante.COLUMN_NAME_EMAIL,
-                    BienalContract.Participante.COLUMN_NAME_HORA_ENTRADA,
-                    BienalContract.Participante.COLUMN_NAME_HORA_SAIDA
+                    ParticipanteContract.Participante._ID,
+                    ParticipanteContract.Participante.COLUMN_NAME_NOME,
+                    ParticipanteContract.Participante.COLUMN_NAME_EMAIL,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA
             };
 
-            String sort = BienalContract.Participante.COLUMN_NAME_NOME + " ASC";
-            Cursor c = db.query(BienalContract.Participante.TABLE_NAME, visao, null, null, null, null, sort);
+            Cursor c = db.query(ParticipanteContract.Participante.TABLE_NAME, visao, null, null, null, null, null);
             this.changeCursor(c);
 
         } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE", e.getStackTrace().toString());
         }
     }
 
@@ -64,9 +64,9 @@ public class ParticipanteAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(BienalContract.Participante.COLUMN_NAME_NOME, participante.getNome());
-            values.put(BienalContract.Participante.COLUMN_NAME_EMAIL, participante.getEmail());;
-            long id = db.insert(BienalContract.Participante.TABLE_NAME, null, values);
+            values.put(ParticipanteContract.Participante.COLUMN_NAME_NOME, participante.getNome());
+            values.put(ParticipanteContract.Participante.COLUMN_NAME_EMAIL, participante.getEmail());;
+            long id = db.insert(ParticipanteContract.Participante.TABLE_NAME, null, values);
             atualizar();
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());
@@ -79,20 +79,20 @@ public class ParticipanteAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getReadableDatabase();
             String[] visao = {
-                    BienalContract.Participante._ID,
-                    BienalContract.Participante.COLUMN_NAME_NOME,
-                    BienalContract.Participante.COLUMN_NAME_EMAIL,
-                    BienalContract.Participante.COLUMN_NAME_HORA_ENTRADA,
-                    BienalContract.Participante.COLUMN_NAME_HORA_SAIDA
+                    ParticipanteContract.Participante._ID,
+                    ParticipanteContract.Participante.COLUMN_NAME_NOME,
+                    ParticipanteContract.Participante.COLUMN_NAME_EMAIL,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA,
+                    ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA
             };
-            String selecao = BienalContract.Participante._ID + " = " + id;
-            Cursor c = db.query(BienalContract.Participante.TABLE_NAME, visao, selecao, null, null, null, null);
+            String selecao = ParticipanteContract.Participante._ID + " = " + id;
+            Cursor c = db.query(ParticipanteContract.Participante.TABLE_NAME, visao, selecao, null, null, null, null);
             c.moveToFirst();
-            participante.setId(c.getInt(c.getColumnIndex(BienalContract.Livro._ID)));
-            participante.setNome(c.getString(c.getColumnIndex(BienalContract.Participante.COLUMN_NAME_NOME)));
-            participante.setEmail(c.getString(c.getColumnIndex(BienalContract.Participante.COLUMN_NAME_EMAIL)));
-            participante.setHoraEntrada(c.getString(c.getColumnIndex(BienalContract.Participante.COLUMN_NAME_HORA_ENTRADA)));
-            participante.setHoraSaida(c.getString(c.getColumnIndex(BienalContract.Participante.COLUMN_NAME_HORA_SAIDA)));
+            participante.setId(c.getInt(c.getColumnIndex(ParticipanteContract.Participante._ID)));
+            participante.setNome(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_NOME)));
+            participante.setEmail(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_EMAIL)));
+            participante.setHoraEntrada(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA)));
+            participante.setHoraSaida(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA)));
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());
             Log.e("BIENAL", e.getStackTrace().toString());
@@ -104,11 +104,10 @@ public class ParticipanteAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(BienalContract.Participante.COLUMN_NAME_HORA_ENTRADA, participante.getHoraEntrada());
+            values.put(ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA, participante.getHoraEntrada());
 
-            String where = BienalContract.Participante._ID+ " = ";
-            String [] args = {Integer.toString(participante.getId())};
-            long id = db.update(BienalContract.Participante.TABLE_NAME, values, where, args);
+            String where = ParticipanteContract.Participante._ID + " = " + participante.getId();
+            long id = db.update(ParticipanteContract.Participante.TABLE_NAME, values, where, null);
             atualizar();
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());
@@ -120,11 +119,10 @@ public class ParticipanteAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
-            values.put(BienalContract.Participante.COLUMN_NAME_HORA_SAIDA, participante.getHoraSaida());
+            values.put(ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA, participante.getHoraSaida());
 
-            String where = BienalContract.Participante._ID+ " = ";
-            String [] args = {Integer.toString(participante.getId())};
-            long id = db.update(BienalContract.Participante.TABLE_NAME, values, where, args);
+            String where = ParticipanteContract.Participante._ID + " = " + participante.getId();
+            long id = db.update(ParticipanteContract.Participante.TABLE_NAME, values, where, null);
             atualizar();
         } catch (Exception e) {
             Log.e("BIENAL", e.getLocalizedMessage());

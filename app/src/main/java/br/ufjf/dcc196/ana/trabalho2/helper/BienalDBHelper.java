@@ -10,7 +10,7 @@ import br.ufjf.dcc196.ana.trabalho2.contract.ParticipanteContract;
 import br.ufjf.dcc196.ana.trabalho2.contract.ReservaContract;
 
 public class BienalDBHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "Bienal.db";
 
     public BienalDBHelper(Context context) {
@@ -20,11 +20,11 @@ public class BienalDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(LivroContract.SQL_CREATE_LIVRO);
-        Log.i("BIENAL", "Tabela Livro criada.");
+        Log.i("BIENAL", LivroContract.SQL_CREATE_LIVRO);
         sqLiteDatabase.execSQL(ParticipanteContract.SQL_CREATE_PARTICIPANTE);
-        Log.i("BIENAL  ", "Tabela Participante criada.");
+        Log.i("BIENAL  ", ParticipanteContract.SQL_CREATE_PARTICIPANTE);
         sqLiteDatabase.execSQL(ReservaContract.SQL_CREATE_RESERVA);
-        Log.i("BIENAL", "Tabela Reserva criada");
+        Log.i("BIENAL", ReservaContract.SQL_CREATE_RESERVA);
         Log.i("BIENAL", "Versão: " + DATABASE_VERSION);
 
     }

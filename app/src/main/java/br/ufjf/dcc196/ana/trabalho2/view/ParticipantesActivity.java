@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.adapter.ParticipanteAdapter;
 import br.ufjf.dcc196.ana.trabalho2.helper.PessoaHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
@@ -15,12 +16,14 @@ public class ParticipantesActivity extends AppCompatActivity {
     private EditText txtNome;
     private EditText txtEmail;
     private Button btnSalvar;
+    private ParticipanteAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participantes);
 
+        adapter = new ParticipanteAdapter(getBaseContext(), null);
         txtNome = (EditText)findViewById(R.id.txtNomeParticipante);
         txtEmail = (EditText) findViewById(R.id.txtEmailParticipante);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
@@ -38,7 +41,8 @@ public class ParticipantesActivity extends AppCompatActivity {
                     txtEmail.requestFocus();
                 }else{
                     Participante p = new Participante(nome, email);
-                    PessoaHelper.getInstance().inserir(p);
+                    //PessoaHelper.getInstance().inserir(p);
+                    adapter.inserir(p);
                     txtNome.setText("");
                     txtEmail.setText("");
                     txtNome.requestFocus();
