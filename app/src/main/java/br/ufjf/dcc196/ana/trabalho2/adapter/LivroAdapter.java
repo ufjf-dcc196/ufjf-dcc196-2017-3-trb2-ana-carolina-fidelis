@@ -47,19 +47,19 @@ public class LivroAdapter extends CursorAdapter {
         try {
             SQLiteDatabase db = bienalDBHelper.getReadableDatabase();
             String[] visao = {
-                    ParticipanteContract.Participante._ID,
-                    ParticipanteContract.Participante.COLUMN_NAME_NOME,
-                    ParticipanteContract.Participante.COLUMN_NAME_EMAIL,
-                    ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA,
-                    ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA
+                    LivroContract.Livro._ID,
+                    LivroContract.Livro.COLUMN_NAME_TITULO,
+                    LivroContract.Livro.COLUMN_NAME_AUTOR,
+                    LivroContract.Livro.COLUMN_NAME_ANO,
+                    LivroContract.Livro.COLUMN_NAME_EDITORA
             };
-            String sort = ParticipanteContract.Participante.COLUMN_NAME_NOME + " ASC";
-            Cursor c = db.query(ParticipanteContract.Participante.TABLE_NAME, visao, null, null, null, null, null);
+            String sort = LivroContract.Livro.COLUMN_NAME_TITULO + " ASC";
+            Cursor c = db.query(LivroContract.Livro.TABLE_NAME, visao, null, null, null, null, sort);
             this.changeCursor(c);
         }
         catch (Exception e) {
-            Log.e("ATUALIZAR PARTICIPANTE", e.getLocalizedMessage());
-            Log.e("ATUALIZAR PARTICIPANTE", e.getStackTrace().toString());
+            Log.e("BIENAL", e.getLocalizedMessage());
+            Log.e("BIENAL", e.getStackTrace().toString());
         }
     }
 

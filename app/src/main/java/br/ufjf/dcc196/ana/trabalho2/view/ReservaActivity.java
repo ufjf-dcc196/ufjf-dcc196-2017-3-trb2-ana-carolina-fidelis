@@ -9,6 +9,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.adapter.LivroSimpleAdapter;
+import br.ufjf.dcc196.ana.trabalho2.adapter.ParticipanteSimpleAdapter;
 import br.ufjf.dcc196.ana.trabalho2.helper.LivroHelper;
 import br.ufjf.dcc196.ana.trabalho2.helper.PessoaHelper;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
@@ -18,6 +20,9 @@ public class ReservaActivity extends AppCompatActivity {
     private Spinner spParticipante;
     private Spinner spLivro;
     private Button btnSalvar;
+    private ParticipanteSimpleAdapter participanteAdapter;
+    private LivroSimpleAdapter livroAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,18 +31,14 @@ public class ReservaActivity extends AppCompatActivity {
         spParticipante = (Spinner) findViewById(R.id.spParticipante);
         spLivro = (Spinner) findViewById(R.id.spLivro);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
+        participanteAdapter = new ParticipanteSimpleAdapter(getBaseContext(), null);
+        livroAdapter = new LivroSimpleAdapter(getBaseContext(), null);
 
-        ArrayAdapter<Participante> adaptador = new ArrayAdapter<>(getApplicationContext(),
-                R.layout.support_simple_spinner_dropdown_item,
-                PessoaHelper.getInstance().listar());
-        adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spParticipante.setAdapter(adaptador);
+        participanteAdapter.atualizar();
+        spParticipante.setAdapter(participanteAdapter);
 
-        ArrayAdapter<Livro> adaptador2 = new ArrayAdapter<>(getApplicationContext(),
-                R.layout.support_simple_spinner_dropdown_item,
-                LivroHelper.getInstance().listar());
-        adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spLivro.setAdapter(adaptador2);
+        livroAdapter.atualizar();
+        spLivro.setAdapter(livroAdapter);
 
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
