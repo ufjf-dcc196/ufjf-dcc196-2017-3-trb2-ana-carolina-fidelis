@@ -16,6 +16,15 @@ public class ReservaContract {
             LivroContract.Livro.TABLE_NAME +"("+LivroContract.Livro._ID + "))";
     public static final String SQL_DROP_RESERVA = "DROP TABLE IF EXISTS " + Reserva.TABLE_NAME;
 
+    public static final String SQL_CONSULTA_RESERVAS = "SELECT participante._id, " +
+            ParticipanteContract.Participante.COLUMN_NAME_NOME + SEP +
+            ParticipanteContract.Participante.COLUMN_NAME_EMAIL
+            + " FROM " + Reserva.TABLE_NAME +
+            " INNER JOIN " + LivroContract.Livro.TABLE_NAME +
+            " livro ON ("+ Reserva.COLUMN_NAME_LIVRO +"= livro."+ LivroContract.Livro._ID + ")"+
+            " INNER JOIN "+ParticipanteContract.Participante.TABLE_NAME+
+            " participante ON ("+ Reserva.COLUMN_NAME_PARTICIPANTE +"= participante."+ ParticipanteContract.Participante._ID + ")";
+
     public static final  class Reserva implements BaseColumns {
         public static final String TABLE_NAME = "reserva";
         public static final String COLUMN_NAME_PARTICIPANTE = "participante_id";

@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.ufjf.dcc196.ana.trabalho2.R;
+import br.ufjf.dcc196.ana.trabalho2.adapter.ReservaAdapter;
 import br.ufjf.dcc196.ana.trabalho2.model.Livro;
 import br.ufjf.dcc196.ana.trabalho2.model.Participante;
 
@@ -16,6 +17,7 @@ public class ReservaListaActivity extends AppCompatActivity {
     private TextView txtAutor;
     private TextView txtEditora;
     private TextView txtAno;
+    private ReservaAdapter reservaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class ReservaListaActivity extends AppCompatActivity {
         txtAutor = (TextView) findViewById(R.id.txtAutor);
         txtEditora = (TextView) findViewById(R.id.txtEditora);
         txtAno = (TextView) findViewById(R.id.txtAno);
+        reservaAdapter = new ReservaAdapter(getBaseContext(), null);
 
 
         Livro livro = (Livro) getIntent().getSerializableExtra("livro");
@@ -35,12 +38,8 @@ public class ReservaListaActivity extends AppCompatActivity {
         txtEditora.setText(livro.getEditora());
         txtAno.setText(livro.getAno());
 
-       final ArrayAdapter<Participante> adaptador = new ArrayAdapter<>(getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                livro.getReservas()
-        );
-
-        lstReservas.setAdapter(adaptador);
+        reservaAdapter.atualizar(livro.getId());
+        lstReservas.setAdapter(reservaAdapter);
     }
 
 
