@@ -57,8 +57,8 @@ public class ReservaAdapter extends CursorAdapter {
             this.changeCursor(c);
         }
         catch (Exception e) {
-            Log.e("RESERVA", e.getLocalizedMessage());
-            Log.e("RESERVA", e.getStackTrace().toString());
+            Log.e("BIENAL RESERVA -", e.getLocalizedMessage());
+            Log.e("BIENAL RESERVA -", e.getStackTrace().toString());
         }
     }
 

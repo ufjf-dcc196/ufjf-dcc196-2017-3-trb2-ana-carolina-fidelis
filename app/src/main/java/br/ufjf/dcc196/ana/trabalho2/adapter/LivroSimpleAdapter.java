@@ -47,8 +47,8 @@ public class LivroSimpleAdapter extends CursorAdapter{
             this.changeCursor(c);
         }
         catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL LIVRO - ", e.getLocalizedMessage());
+            Log.e("BIENAL LIVRO - ", e.getStackTrace().toString());
         }
     }
 }

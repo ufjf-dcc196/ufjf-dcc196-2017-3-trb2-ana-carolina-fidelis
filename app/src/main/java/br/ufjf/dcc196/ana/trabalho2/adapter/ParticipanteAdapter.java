@@ -55,8 +55,8 @@ public class ParticipanteAdapter extends CursorAdapter {
             this.changeCursor(c);
 
         } catch (Exception e) {
-            Log.e("BIENAL PARTICIPANTE", e.getLocalizedMessage());
-            Log.e("BIENAL PARTICIPANTE", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE - ", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE - ", e.getStackTrace().toString());
         }
     }
 
@@ -69,8 +69,8 @@ public class ParticipanteAdapter extends CursorAdapter {
             long id = db.insert(ParticipanteContract.Participante.TABLE_NAME, null, values);
             atualizar();
         } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE - ", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE - ", e.getStackTrace().toString());
         }
     }
 
@@ -94,8 +94,8 @@ public class ParticipanteAdapter extends CursorAdapter {
             participante.setHoraEntrada(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_HORA_ENTRADA)));
             participante.setHoraSaida(c.getString(c.getColumnIndex(ParticipanteContract.Participante.COLUMN_NAME_HORA_SAIDA)));
         } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE - ", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE - ", e.getStackTrace().toString());
         }
         return participante;
     }
@@ -110,8 +110,8 @@ public class ParticipanteAdapter extends CursorAdapter {
             long id = db.update(ParticipanteContract.Participante.TABLE_NAME, values, where, null);
             atualizar();
         } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE - ", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE - ", e.getStackTrace().toString());
         }
     }
 
@@ -125,8 +125,8 @@ public class ParticipanteAdapter extends CursorAdapter {
             long id = db.update(ParticipanteContract.Participante.TABLE_NAME, values, where, null);
             atualizar();
         } catch (Exception e) {
-            Log.e("BIENAL", e.getLocalizedMessage());
-            Log.e("BIENAL", e.getStackTrace().toString());
+            Log.e("BIENAL PARTICIPANTE - ", e.getLocalizedMessage());
+            Log.e("BIENAL PARTICIPANTE - ", e.getStackTrace().toString());
         }
     }
 }
