@@ -63,6 +63,7 @@ public class ReservaActivity extends AppCompatActivity {
                     spLivro.setSelection(0);
                     spParticipante.setSelection(0);
                     Toast.makeText(ReservaActivity.this, "Reserva realizada com sucesso.", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
 
                 }

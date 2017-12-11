@@ -47,6 +47,7 @@ public class ParticipantesActivity extends AppCompatActivity {
                     txtEmail.setText("");
                     txtNome.requestFocus();
                     Toast.makeText(getApplicationContext(), "Participante salvo com sucesso!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
